@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="1080" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ce733136-a345-425b-8c2c-4d3a7f9ef040">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select class_id, class_period, class_date, class_title, class_cost, room_id, extract(month from class_date)
+from class
+order by class_id]]>
+	</queryString>
+	<field name="CLASS_ID" class="java.math.BigDecimal"/>
+	<field name="CLASS_PERIOD" class="java.lang.String"/>
+	<field name="CLASS_DATE" class="java.sql.Timestamp"/>
+	<field name="CLASS_TITLE" class="java.lang.String"/>
+	<field name="CLASS_COST" class="java.math.BigDecimal"/>
+	<field name="ROOM_ID" class="java.math.BigDecimal"/>
+	<field name="EXTRACT(MONTHFROMCLASS_DATE)" class="java.math.BigDecimal"/>
+	<variable name="CLASS_ID_1" class="java.lang.Integer" resetType="Group" resetGroup="month" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{CLASS_ID}]]></variableExpression>
+	</variable>
+	<variable name="CLASS_ID_2" class="java.lang.Integer" resetType="Column" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{CLASS_ID}]]></variableExpression>
+	</variable>
+	<group name="month">
+		<groupExpression><![CDATA[$F{EXTRACT(MONTHFROMCLASS_DATE)}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<staticText>
+					<reportElement x="500" y="29" width="55" height="20" uuid="4b21886d-31c7-4e58-9e8c-165a5bd8675d"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Mã phòng]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="155" y="0" width="21" height="20" uuid="0d2290c7-aaf0-4b16-af52-8cc98be0e2d9"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{EXTRACT(MONTHFROMCLASS_DATE)}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="155" height="20" uuid="9a105938-4a28-4647-afcd-d7b1e90bd2fa"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[CÁC KHÓA TẬP TRONG THÁNG]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="400" y="29" width="100" height="20" uuid="6e5cc100-4c61-4512-9bb5-e9628a0333fc"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Giá]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="276" y="29" width="124" height="20" uuid="63005235-926a-4412-87fd-e4fe3e27a549"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nội dung]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="176" y="29" width="100" height="20" uuid="a83eaefe-76e3-4526-8eea-307fec2b492b"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Ngày bắt đầu]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="76" y="29" width="100" height="20" uuid="ca90a70a-2fdf-494d-a55c-a8f13f49e077"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Thời gian tập]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="29" width="76" height="20" uuid="ee49d337-61a6-40ca-a11c-f0791aae6206"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Mã khóa tập]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="52">
+				<staticText>
+					<reportElement x="0" y="24" width="100" height="20" uuid="95660347-2f5e-4243-b736-2b8348179727"/>
+					<text><![CDATA[Tổng cộng có]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="61" y="24" width="15" height="20" uuid="466f888d-71db-49b6-9e82-df1c401c4d05"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{CLASS_ID_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="76" y="24" width="100" height="20" uuid="bf889948-3a1c-49e2-b82d-4b0c167de35f"/>
+					<text><![CDATA[khóa tập đang mở]]></text>
+				</staticText>
+				<line>
+					<reportElement x="42" y="14" width="468" height="1" uuid="7cd34f25-ee45-40ad-b288-9a4173a8014d"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement x="88" y="73" width="376" height="34" uuid="c26bf866-64fa-4d14-84d1-1650080632fc"/>
+				<textElement textAlignment="Center">
+					<font size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DANH SÁCH CÁC KHÓA TẬP]]></text>
+			</staticText>
+			<image>
+				<reportElement x="7" y="0" width="193" height="30" uuid="f2bf0cdd-95dc-43a7-b131-e2656a5f3ae8"/>
+				<imageExpression><![CDATA["E:\\USB\\Documents\\Nam 2\\HK2\\Programming Java\\TH\\DoAn\\Java Swing\\GymManagement_new\\src\\Report\\Logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="76" y="0" width="434" height="20" uuid="67b852df-6b9b-4626-808b-764c8ed0febe"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRUNG TÂM LUYỆN TẬP THỂ HÌNH & CHĂM SÓC SỨC KHỎE HÀNG ĐẦU TẠI VIỆT NAM]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="120" width="100" height="20" uuid="adc690c2-27ed-4946-8ce9-6a8e5152b31a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="16" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="500" y="0" width="55" height="20" uuid="babe6a57-03f9-449b-9658-f3ec00f0cd37"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ROOM_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="ebf32b47-52c9-405e-b25c-d3a515db5e2a"/>
+				<box rightPadding="10">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CLASS_COST}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="124" height="20" uuid="fd485911-b023-4d49-8929-036674f05bc5"/>
+				<box leftPadding="5">
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{CLASS_TITLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="0" width="100" height="20" uuid="1492281c-4d2b-4427-890f-f55eab0fed0d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CLASS_DATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="0" width="100" height="20" uuid="65ac7d67-b253-4f83-82e9-dfe4dd63eee1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CLASS_PERIOD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="76" height="20" uuid="43916a70-ea9e-4d19-9101-3f1bb6fa8ab7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CLASS_ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="425" y="0" width="23" height="20" uuid="ddecc2e0-13e7-4f9c-8787-3055ec2fd359"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{CLASS_ID_2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="298" y="0" width="127" height="20" uuid="56893bc5-178c-4248-a05e-e7c5aa933ffd"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Danh sách bao gồm ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="0" width="107" height="20" uuid="bdaa2fe2-5b61-4430-aa9e-fcefe479bb3b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[khóa tập]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="5" width="80" height="20" uuid="2fa50a24-dbdb-44fa-9277-f2f7baf9d7cc"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="5" width="40" height="20" uuid="2e5247f5-cb8a-44d3-90d5-82812078bceb"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="14" splitType="Stretch"/>
+	</summary>
+</jasperReport>

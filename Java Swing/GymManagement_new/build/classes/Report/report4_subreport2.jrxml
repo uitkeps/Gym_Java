@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4_subreport2" language="groovy" pageWidth="555" pageHeight="802" whenNoDataType="BlankPage" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e7490bca-e22c-4eec-a522-ac5adaeb9910">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select m.mem_id,mem_level,mem_bonus,mem_fee
+from membership m, signup_membership sm,payment p
+where 
+	p.payment_id=sm.payment_id
+	and sm.mem_id=m.mem_id
+	and p.payment_id=20]]>
+	</queryString>
+	<field name="MEM_ID" class="java.math.BigDecimal"/>
+	<field name="MEM_LEVEL" class="java.lang.String"/>
+	<field name="MEM_BONUS" class="java.lang.String"/>
+	<field name="MEM_FEE" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="52" height="20" uuid="af99529a-d0be-42b8-a2f7-7502e997b113"/>
+				<text><![CDATA[Mã TV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="2" width="76" height="20" uuid="93fa241d-c463-4a7e-9f6b-2f113468c132"/>
+				<text><![CDATA[Bậc TV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="2" width="100" height="20" uuid="47096517-e88d-4305-9fa5-7971a1b41e17"/>
+				<text><![CDATA[Bonus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="2" width="100" height="20" uuid="531d6855-e8c4-4e86-9c64-2c077c7392f1"/>
+				<text><![CDATA[Trị giá]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="37" height="20" uuid="ae94b33e-e284-47f4-9e03-a7e58aece00f"/>
+				<textFieldExpression><![CDATA[$F{MEM_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="1" width="124" height="20" uuid="64279b78-be5c-4eb8-a67e-f1ee40898c4d"/>
+				<textFieldExpression><![CDATA[$F{MEM_BONUS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="52" y="0" width="76" height="20" uuid="d6e85e96-1368-41b8-b117-8894198c51c9"/>
+				<textFieldExpression><![CDATA[$F{MEM_LEVEL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="0" width="100" height="20" uuid="01473547-a3ce-4a4d-bf29-b8107a553481"/>
+				<textFieldExpression><![CDATA[$F{MEM_FEE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

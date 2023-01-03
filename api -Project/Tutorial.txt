@@ -1,0 +1,1 @@
+Vào folder API -> Terminal -> Gõ lần lượt: node -v, npm -v, npx nodemon

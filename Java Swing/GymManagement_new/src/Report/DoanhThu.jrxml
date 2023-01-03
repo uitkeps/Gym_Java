@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d73072e-c8b4-4627-b8ce-8a221ac81c4e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Doan" uuid="375a6e96-5e6a-469b-b1e6-ee732b2b3e2b">
+		<queryString language="SQL">
+			<![CDATA[select *
+from customer, payment]]>
+		</queryString>
+		<field name="CUS_ID" class="java.math.BigDecimal"/>
+		<field name="CUS_NAME" class="java.lang.String"/>
+		<field name="CUS_TYPE" class="java.lang.String"/>
+		<field name="TOTAL" class="java.math.BigDecimal"/>
+		<group name="CUS_ID">
+			<groupExpression><![CDATA[$F{CUS_ID}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="Cus" uuid="13bba071-65ff-4929-9736-565a83b25420">
+		<queryString language="SQL">
+			<![CDATA[select *
+from customer, payment
+]]>
+		</queryString>
+		<field name="CUS_ID" class="java.math.BigDecimal"/>
+		<field name="CUS_NAME" class="java.lang.String"/>
+		<field name="CUS_TYPE" class="java.lang.String"/>
+		<field name="TOTAL" class="java.math.BigDecimal"/>
+		<group name="CUS_ID">
+			<groupExpression><![CDATA[$F{CUS_ID}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="Cus2" uuid="da807655-3fb4-4345-bb90-dc37895812ff">
+		<queryString language="SQL">
+			<![CDATA[select * 
+from customer, payment]]>
+		</queryString>
+		<field name="CUS_ID" class="java.math.BigDecimal"/>
+		<field name="CUS_NAME" class="java.lang.String"/>
+		<field name="CUS_TYPE" class="java.lang.String"/>
+		<field name="TOTAL" class="java.math.BigDecimal"/>
+		<group name="CUS_ID">
+			<groupExpression><![CDATA[$F{CUS_ID}]]></groupExpression>
+		</group>
+		<group name="CUS_NAME">
+			<groupExpression><![CDATA[$F{CUS_NAME}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="Year" class="java.lang.String"/>
+	<parameter name="Sum" class="java.lang.String"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select distinct cus_name
+from customer]]>
+	</queryString>
+	<field name="CUS_NAME" class="java.lang.String"/>
+	<group name="MonthSum">
+		<groupExpression><![CDATA[select extract(month from payment_lastday)
+from payment]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<staticText>
+					<reportElement x="143" y="30" width="100" height="20" uuid="187d77cb-1979-4531-99fa-69a3218ca570"/>
+					<text><![CDATA[Mã hoa đơn]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="243" y="30" width="100" height="20" uuid="732e6fe9-e442-4aad-a67e-5b4728872fa1"/>
+					<text><![CDATA[Tổng tiền]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="74" height="30" uuid="50b82442-22ec-4b92-8996-e8add256279f"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<text><![CDATA[Tháng]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<staticText>
+					<reportElement x="190" y="24" width="100" height="20" uuid="cedd2b90-e8bc-4c12-9489-d0300ad289bd"/>
+					<text><![CDATA[Doanh thu tháng:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="180" splitType="Stretch">
+			<staticText>
+				<reportElement x="74" y="65" width="433" height="55" uuid="51920f6d-2af4-408d-95cd-c08137c6447a"/>
+				<textElement>
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOANH SỐ BÁN HÀNG ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="120" width="100" height="20" uuid="6ab9edf6-59b7-4b32-878a-6b5c69aeea0b"/>
+				<text><![CDATA[NĂM]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="253" y="120" width="100" height="20" uuid="8ca2665a-8133-47b5-8fc3-daf47e2a7328"/>
+				<textFieldExpression><![CDATA[$P{Year}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="119" height="46" uuid="e2832491-87c8-4a8f-80ed-6be65f4fa744"/>
+				<imageExpression><![CDATA["E:\\USB\\Documents\\Nam 2\\HK2\\Programming Java\\TH\\DoAn\\Java Swing\\GymManagement_new\\src\\Report\\Logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="119" y="0" width="273" height="20" uuid="f1bae71f-c63d-4dce-b75d-609929411adc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRUNG TÂM THỂ HÌNH & YOGA HÀNG ĐẦU VIỆT NAM]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="55" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="174" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="353" y="10" width="100" height="20" uuid="8482eed3-996f-49e8-9c2d-1ac8125347d5"/>
+				<textFieldExpression><![CDATA[$P{Sum}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="600" pageHeight="800" columnWidth="560" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8d29c4ce-dae4-468e-93db-b54db0131a90">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="YEAR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="thang" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NguoiKy" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT C.CLASS_ID,CLASS_TITLE,CLASS_COST,COUNT(SC.CLASS_ID),COUNT(SC.CLASS_ID)*CLASS_COST AS TIEN
+FROM PAYMENT P, SIGNUP_CLASS SC,CLASS C
+WHERE 
+	P.PAYMENT_ID=SC.PAYMENT_ID
+	AND SC.CLASS_ID=C.CLASS_ID
+	AND TOTAL>0
+	AND EXTRACT(YEAR FROM PAYMENT_LASTDAY)=$P{YEAR}
+	AND EXTRACT(MONTH FROM PAYMENT_LASTDAY)=$P{thang}
+GROUP BY C.CLASS_ID,CLASS_TITLE,CLASS_COST
+ORDER BY C.CLASS_ID]]>
+	</queryString>
+	<field name="CLASS_ID" class="java.math.BigDecimal"/>
+	<field name="CLASS_TITLE" class="java.lang.String"/>
+	<field name="CLASS_COST" class="java.math.BigDecimal"/>
+	<field name="COUNT(SC.CLASS_ID)" class="java.math.BigDecimal"/>
+	<field name="TIEN" class="java.math.BigDecimal"/>
+	<variable name="TIEN_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{TIEN}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="141" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="47" width="560" height="61" uuid="fec48aac-c1a2-42d0-86cb-c7b2fbefbf52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOANH THU KHÓA TẬP]]></text>
+			</staticText>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss Z">
+				<reportElement x="460" y="121" width="100" height="20" uuid="93b450d2-5e63-4a66-9659-9a242efca51d"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="48" y="0" width="512" height="26" uuid="14d6b360-ed97-4502-bc93-0505573695e4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRUNG TÂM LUYỆN TẬP THỂ HÌNH & CHĂM SÓC SỨC KHỎE HÀNG ĐẦU TẠI VIỆT NAM]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="162" height="26" uuid="73008d26-d6a8-4645-a122-aac4f48aa089"/>
+				<imageExpression><![CDATA["E:\\USB\\Documents\\Nam 2\\HK2\\Programming Java\\TH\\DoAn\\Java Swing\\GymManagement_new\\src\\Report\\Logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="202" y="11" width="29" height="20" uuid="17252c05-a6c5-4e39-a37c-c00969842f46"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Tháng]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="215" y="11" width="55" height="20" uuid="5263df06-3030-405d-85b4-2a4d98cab76b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{thang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="11" width="100" height="20" uuid="242fc910-4dcf-4383-b719-3d46ac6cc307"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{YEAR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="259" y="11" width="27" height="20" uuid="b825e741-d9ac-44da-a66a-60bbcd9b2f72"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Năm]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="0" width="61" height="20" uuid="cfc760e6-b1a2-4c6f-9f15-d20b19226085"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Mã lớp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="0" width="277" height="20" uuid="93a72e5a-1f90-4333-be7f-170303c8ed49"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Tên lớp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="0" width="100" height="20" uuid="7becde81-bc54-46fd-8733-8fb8ac841a82"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Giá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="0" width="63" height="20" uuid="7b6e3870-910a-46c1-8b4f-c66a25425d4c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[SL ĐK]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="0" width="61" height="20" uuid="aecbe4ee-350d-41ed-8488-2a16e7665c0a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLASS_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="0" width="63" height="20" uuid="9544d30c-0aa4-4839-a75d-00191185c95e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COUNT(SC.CLASS_ID)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="91" y="0" width="277" height="20" uuid="0bb79bb3-e673-477a-81c7-0e802c9a7ca8"/>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLASS_TITLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="0" width="100" height="20" uuid="44e66101-45d4-47cc-8cbd-e3cbb5febec8"/>
+				<box rightPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLASS_COST}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="368" y="36" width="100" height="20" uuid="c4cf6c52-85a8-43f0-ad08-90f3b6afb133"/>
+				<box rightPadding="5">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TIEN_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="297" y="36" width="100" height="20" uuid="cebcb2c3-cf0f-4038-9851-e0614e12a9cf"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TỔNG CỘNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="36" width="46" height="20" uuid="8542958c-236b-4497-8bc8-696af09457fb"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[VNĐ]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="115" splitType="Stretch">
+			<staticText>
+				<reportElement x="349" y="18" width="143" height="20" uuid="0832452b-d858-4a58-8518-7c1a2b7c9947"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Người lập báo cáo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="349" y="95" width="143" height="20" uuid="bafad097-aa30-4fc9-9723-ae930c81f8ed"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NguoiKy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="349" y="54" width="143" height="20" uuid="93084091-f8ec-463b-8fc0-4ff153170b72"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[ki tẻn]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

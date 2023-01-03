@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4_subreport3" language="groovy" pageWidth="555" pageHeight="802" whenNoDataType="BlankPage" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a6c3ea82-4b7c-4729-8796-01bb00774006">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select distinct sc.class_id, class_title, class_cost
+from class cl, payment p,signup_class sc
+where 
+	cl.class_id=sc.class_id
+	and p.payment_id =sc.payment_id
+	and p.payment_id=20
+order by sc.class_id]]>
+	</queryString>
+	<field name="CLASS_ID" class="java.math.BigDecimal"/>
+	<field name="CLASS_TITLE" class="java.lang.String"/>
+	<field name="CLASS_COST" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="45" height="20" uuid="cb692ea8-409c-4db4-93d2-f0918cf9c403"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Mã lớp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="2" width="170" height="20" uuid="2c8dbffe-423b-4824-865c-1308ced3fb77"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tên lớp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="2" width="92" height="20" uuid="ce5c1651-5997-4543-bd7d-87c5aa0d13db"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Trị giá]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="45" height="20" uuid="7c231579-fce8-442e-8298-3364c91a099e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CLASS_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="0" width="170" height="20" uuid="1ca9e64f-aa5f-4eb4-8345-5cc9bd608f11"/>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{CLASS_TITLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="215" y="0" width="92" height="20" uuid="ce58ca83-2f21-49f4-b41e-ebacd932bf65"/>
+				<box rightPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CLASS_COST}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

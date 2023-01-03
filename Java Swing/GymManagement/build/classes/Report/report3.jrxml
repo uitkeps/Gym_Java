@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="345" pageHeight="600" whenNoDataType="AllSectionsNoDetail" columnWidth="305" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1582765b-e2ca-4dd1-be63-ea5633a8cda8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT P.PAYMENT_ID,PRODUCT_NAME,AMOUNT,P.STAFF_ID,
+C.CUS_NAME,CUS_TYPE,PD.PRODUCT_ID,PAYMENT_MODE,PRODUCT_PRICE,PAYMENT_MODE,
+product_price*amount,total
+FROM PAYMENT P, PRODUCT PR, PAYMENT_DETAIL PD,STAFF S, CUSTOMER C
+WHERE
+    P.PAYMENT_ID=PD.PAYMENT_ID
+    AND PR.PRODUCT_ID=PD.PRODUCT_ID
+    AND P.CUS_ID=C.CUS_ID
+    AND S.STAFF_ID=P.STAFF_ID
+    AND P.PAYMENT_ID=$P{parameter1}]]>
+	</queryString>
+	<field name="PAYMENT_ID" class="java.math.BigDecimal"/>
+	<field name="PRODUCT_NAME" class="java.lang.String"/>
+	<field name="AMOUNT" class="java.math.BigDecimal"/>
+	<field name="STAFF_ID" class="java.math.BigDecimal"/>
+	<field name="CUS_NAME" class="java.lang.String"/>
+	<field name="CUS_TYPE" class="java.lang.String"/>
+	<field name="PRODUCT_ID" class="java.math.BigDecimal"/>
+	<field name="PAYMENT_MODE" class="java.lang.String"/>
+	<field name="PRODUCT_PRICE" class="java.math.BigDecimal"/>
+	<field name="PRODUCT_PRICE*AMOUNT" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="84" width="305" height="32" uuid="02d052b7-8bf0-4bfa-a728-43c21def905b"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PHIẾU MUA HÀNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="305" height="21" uuid="a51dbc1a-2da8-4536-af53-058d6faa0b56"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Khu phố 3, phường Chánh Phú Hòa, thị xã Bến Cát, Bình Dương]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="10" width="305" height="20" uuid="4a92b0f9-6a28-44bb-b449-3a1c03c7f733"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIETGYM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="51" width="305" height="20" uuid="8827c24c-7e84-4773-981f-e70d29bdc0bc"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[0347712598]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="85" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="ffad94e0-ec83-4e35-991e-b2e57d32ac72"/>
+				<textFieldExpression><![CDATA[$F{CUS_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="20" width="100" height="20" uuid="f5f71efa-1263-405c-8c85-3bb5ea9c142b"/>
+				<textFieldExpression><![CDATA[$F{CUS_TYPE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="40" width="100" height="20" uuid="116b961e-a947-44d9-86fd-2d296e9fcc18"/>
+				<textFieldExpression><![CDATA[$F{PAYMENT_MODE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="d9bf8c47-ec1b-48ec-9510-982afd24ce8c"/>
+				<text><![CDATA[Tên khách hàng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="5beeff83-b117-4112-bc7e-ab6ad09c99c4"/>
+				<text><![CDATA[Cấp bậc thành viên]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="8e0b2cac-4bf6-4357-8a6e-8bc0706f2ac0"/>
+				<text><![CDATA[Hình thức thanh toán]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="35" height="20" uuid="c9ef20cb-f7ae-4035-9422-288eb00d7357"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Mã SP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="0" width="144" height="20" uuid="ae47ae64-5dca-4c11-b6f7-69913e82d5db"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tên SP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="105" height="20" uuid="0ce6720b-d18b-4535-bfa4-9fc5ae357a17"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Đơn giá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="0" width="21" height="20" uuid="4ef6af53-6515-4efa-850f-dcbbf5d7633e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="35" height="20" uuid="a1909f37-80e1-4795-a40b-1fee017727cb"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PRODUCT_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="35" y="0" width="144" height="20" uuid="cb1c37dc-957c-4ec5-b7af-78ddea9d2b40"/>
+				<box leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{PRODUCT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="179" y="0" width="21" height="20" uuid="3c34c513-47dc-4167-9c57-f43b7ab152e3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{AMOUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="105" height="20" uuid="753974dc-b6b4-42be-ba5c-df2eece6a919"/>
+				<box rightPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{PRODUCT_PRICE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="205" y="11" width="100" height="20" uuid="a35ffc51-d701-44e8-83e8-2474cf3853a7"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="11" width="100" height="20" uuid="07a9032e-73fd-4a1f-af83-a85059f0dd2c"/>
+				<text><![CDATA[Tổng]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="37" width="305" height="1" uuid="739fd334-dd1c-4a66-b6cb-89862224c29e"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="148" splitType="Stretch">
+			<textField>
+				<reportElement x="68" y="0" width="100" height="20" uuid="6ddeedae-75b8-403a-834c-9f9ccaaeb7f8"/>
+				<textFieldExpression><![CDATA[$F{STAFF_ID}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="200" y="0" width="100" height="20" uuid="7139aae7-6b3c-4421-9037-e4216b3187a5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="127" width="305" height="20" uuid="5ce2fd3c-fe7e-4132-b662-eed44c6e0fc0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Hẹn gặp lại <3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="107" width="305" height="20" uuid="fbf9966a-2bd5-4afa-85b8-ca2d0a04c97e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CẢM ƠN QUÝ KHÁCH !	]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="73" y="40" width="200" height="50" uuid="15007db4-557e-4dc7-a5bc-e99b862f6576"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="3of9" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="d90063d4-db90-48ec-9161-21c210ae05e3"/>
+				<text><![CDATA[Mã thu ngân]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

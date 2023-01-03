@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="345" pageHeight="650" whenNoDataType="AllSectionsNoDetail" columnWidth="305" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d462033d-ab1e-4770-be34-8be0779a6c3d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="76615118-970e-4ca5-875b-fe21e0e907ff"/>
+	<subDataset name="dataset2" uuid="cbc5273d-17f3-4074-8bb9-1ea0e77e20b2"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["E:\\USB\\Documents\\Nam 2\\HK2\\Programming Java\\TH\\DoAn\\Java Swing\\GymManagement_new\\src\\Report\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="payment_id" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select distinct pd.product_id,p.payment_id ,total,product_name,amount,product_price,cus_name, p.payment_mode, s.staff_name, product_price*amount as thanhtien,cus_type,p.staff_id
+from payment p,  payment_detail pd, product pr, staff s, customer c, discount d 
+where 
+	p.payment_id=pd.payment_id
+	and pr.product_id=pd.product_id
+	and p.staff_id=s.staff_id
+	and p.cus_id=c.cus_id
+	
+and p.payment_id=$P{payment_id}
+order by pd.product_id]]>
+	</queryString>
+	<field name="PRODUCT_ID" class="java.math.BigDecimal"/>
+	<field name="PAYMENT_ID" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<field name="PRODUCT_NAME" class="java.lang.String"/>
+	<field name="AMOUNT" class="java.math.BigDecimal"/>
+	<field name="PRODUCT_PRICE" class="java.math.BigDecimal"/>
+	<field name="CUS_NAME" class="java.lang.String"/>
+	<field name="PAYMENT_MODE" class="java.lang.String"/>
+	<field name="STAFF_NAME" class="java.lang.String"/>
+	<field name="THANHTIEN" class="java.math.BigDecimal"/>
+	<field name="CUS_TYPE" class="java.lang.String"/>
+	<field name="STAFF_ID" class="java.math.BigDecimal"/>
+	<variable name="THANHTIEN_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{THANHTIEN}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="115" splitType="Stretch">
+			<staticText>
+				<reportElement x="55" y="74" width="200" height="32" uuid="cfc001dd-0c01-48d7-9fad-d38d3006d374"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PHIẾU TÍNH TIỀN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="0" width="48" height="20" uuid="7ba482f0-cb8e-4669-8e3c-be1fa064f778"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIETGYM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="20" width="247" height="34" uuid="13c20a7e-5a79-4c58-a020-776c803b3368"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Khu phố 3, phường Chánh Phú Hòa, thị xã Bến Cát, Bình Dương]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="54" width="59" height="20" uuid="0effc645-7ca0-4604-a30e-5b470d7948e8"/>
+				<text><![CDATA[0347712598]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="ed306104-71cb-4f16-a6dc-04dec5bbb23e"/>
+				<text><![CDATA[Tên khách hàng]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="0" width="100" height="20" uuid="ba0e7c03-af07-43ad-a1dc-2dc481d308b9"/>
+				<textFieldExpression><![CDATA[$F{CUS_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="20" width="100" height="20" uuid="ba6784df-237a-43e0-acf0-7375104e21b2"/>
+				<textFieldExpression><![CDATA[$F{CUS_TYPE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="051d75e1-b863-40aa-958b-e0b05562c2e7"/>
+				<text><![CDATA[Cấp bậc thành viên]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="109" y="40" width="100" height="20" uuid="784a12ec-0e44-48e4-8745-d7323338b7af"/>
+				<textFieldExpression><![CDATA[$F{PAYMENT_MODE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="68bf1d47-6d66-48dc-90e4-1b98dcc52cfc"/>
+				<text><![CDATA[Hình thức thanh toán]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="159">
+			<subreport>
+				<reportElement x="0" y="51" width="110" height="52" uuid="f704567c-4439-4aab-9b37-5b867dbac7e8"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report4_subreport3.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="103" width="110" height="50" uuid="d6931941-b115-45d2-a110-ad41aa956f39"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report4_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="0" width="110" height="51" uuid="9ecfc6ed-02a9-4f59-a2d7-7fa261d27605"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report4_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="511" y="73" width="100" height="20" uuid="489cf504-67d5-4928-ae3b-af4dab0e9d48"/>
+				<textFieldExpression><![CDATA[$P{SUBREPORT_DIR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="215" y="0" width="64" height="20" uuid="678ef206-5670-4245-914a-1ad535314880"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="32" y="19" width="194" height="1" uuid="2f133252-ae70-4217-af42-28e5e14c5615"/>
+			</line>
+			<staticText>
+				<reportElement x="155" y="0" width="60" height="20" uuid="31caef8e-c2e9-43be-8214-96a71eba172f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TỔNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="26" height="20" uuid="a925bd1b-f917-41b2-b9c2-27679ec26f74"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VND]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="130" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="8998161f-43b4-44d5-bdad-1d91efa98971"/>
+				<text><![CDATA[Thu ngân]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="0" width="100" height="20" uuid="564ebafd-bd14-4d06-ac54-53b272bf6d95"/>
+				<textFieldExpression><![CDATA[$F{STAFF_ID}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="160" y="0" width="100" height="20" uuid="c7fd58a6-812e-4585-94e4-3a2edfedead4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="90" y="89" width="123" height="20" uuid="74dd653e-6665-4991-bc2e-8a72599761b6"/>
+				<text><![CDATA[CẢM ƠN QUÝ KHÁCH !	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="109" width="75" height="20" uuid="13f74ea7-b788-49a7-a272-a77f50ac8369"/>
+				<text><![CDATA[Hẹn gặp lại <3]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="72" y="35" width="200" height="50" uuid="9a19c24a-3df3-4e3a-ad0a-084ef95aa0d1"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="3of9" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</pageFooter>
+</jasperReport>
